@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sms_status/sms_advanced.dart';
 
-// onBackgroundMessage(SmsMessage message) {
-//   debugPrint("onBackgroundMessage called");
-// }
 
 void main() {
   runApp(MyApp());

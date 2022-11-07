@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sms_advanced/sms_advanced.dart';
 
 onBackgroundMessage(SmsMessage message) {
-  debugPrint("onBackgroundMessage called");
+  debugPrint("onBackgroundMessage called7777");
 }
 class SmsAdvanced extends StatefulWidget {
   const SmsAdvanced({Key? key}) : super(key: key);
@@ -18,18 +18,18 @@ class _SmsAdvancedState extends State<SmsAdvanced> {
  String? address ="01735756919";
   String? body= 'Hello Sms_Advanced';
 
-  // final SmsQuery query = SmsQuery();
-  // List<SmsThread> threads = [];
-  //
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   query.getAllThreads.then((value) {
-  //     threads = value;
-  //     setState(() {});
-  //   });
-  // }
+  final SmsQuery query = SmsQuery();
+  List<SmsThread> threads = [];
+
+
+  @override
+  void initState() {
+    super.initState();
+    query.getAllThreads.then((value) {
+      threads = value;
+      setState(() {});
+    });
+  }
 
   ///
   // SimCardsProvider provider = new SimCardsProvider();
@@ -51,8 +51,8 @@ class _SmsAdvancedState extends State<SmsAdvanced> {
   //
   //
   //
-  //   //  sender.sendSms(message,simCard:card[1] );
-
+// sender.sendSms(message,simCard:card[1] );
+///
   // sendSms(){
   //
   //   SmsSender sender = new SmsSender();
@@ -64,6 +64,8 @@ class _SmsAdvancedState extends State<SmsAdvanced> {
   sendSms()async{
 
     SmsSender sender =  SmsSender();
+    SimCardsProvider provider = new SimCardsProvider();
+    List<SimCard> card = await provider.getSimCards();
 
     SmsMessage message = SmsMessage(address,body);
     message.onStateChanged.listen((state) {
@@ -100,9 +102,13 @@ class _SmsAdvancedState extends State<SmsAdvanced> {
       }
     });
 
+
+    sender.sendSms(message,simCard: SimCard(slot:1, imei: "864304050759464"));
+
+    //sender.sendSms(message,simCard:card[1] );
     //  SmsMessage message = SmsMessage(address,body);
 
-    sender.sendSms(message);
+   // sender.sendSms(message);
   }
 
 

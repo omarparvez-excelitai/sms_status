@@ -134,7 +134,7 @@ class _SmsAdvancedState extends State<SmsAdvanced> {
               const SizedBox(height: 20,),
               Text("SMS Text: $body"),
               const SizedBox(height: 20,),
-              Text("SMS Status is: $status"),//
+              Text("SMS Status is: $status"),//test
             ],
           ),
         )
